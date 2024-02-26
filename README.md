@@ -1,27 +1,34 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.18;
+# ERC20
 
-contract ErrorHandling {
-    function ValidateInput(uint256 _num1, uint256 _num2, uint256 _result) public pure {
-        _result = _num1 - _num2;
-        require(_result > 5, "First number should be greater than the second");
-    }
+This is a contract to mint,transfer and burn the token from a walllet.
 
-    uint256 public total;
 
-    function CheckSum(uint256 num1, uint256 num2) public {
-        total = num1 + num2;
-        if (total < 15) {
-            revert("Input must be higher so that the sum is greater than 15");
-        }
-    }
+## Description
 
-    uint256 divisor;
-    uint256 dividend;
+This is a Solidity smart contract for creating a custom ERC20 token on the Ethereum blockchain. The token is called "Krishna" and has the symbol "JKL". The contract allows the owner to mint new tokens and assign them to a specific address, transfer tokens between addresses, and burn tokens. The contract uses the OpenZeppelin ERC20 implementation for security.
+ 
 
-    function CalculateQuotient(uint256 quotient) public view returns (uint256) {
-        assert(divisor > 0);
-        quotient = dividend / divisor;
-        return quotient;
-    }
-}
+## Requirements
+
+To use this contract, you will need:
+
+1)An Ethereum wallet (such as MetaMask) to interact with the contract
+
+2)Some ETH to pay for gas fees on the Ethereum network
+## Usage
+
+1)Deploy the contract to the Ethereum network using Remix or another Solidity compiler. Make sure to set the name and symbol for your token.
+
+2)Once the contract is deployed, call the mint function to create new tokens and assign them to an address. This function can only be called by the contract owner.
+
+3)Use the transfer function to send tokens from one address to another.
+
+4)Use the burn function to permanently remove tokens from circulation.
+## License
+
+This code is licensed under the [MIT](https://choosealicense.com/licenses/mit/) license.See the LICENSE file for more information.
+
+
+## Acknowledgements
+
+This contract is based on the OpenZeppelin ERC20 implementation and follows best practices for secure smart contract development. The contract was created for educational purposes only and should not be used in production without appropriate security audits and testing.
