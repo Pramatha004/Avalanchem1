@@ -7,14 +7,23 @@ import "@openzeppelin/contracts@5.0.1/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts@5.0.1/access/Ownable.sol";
 import "@openzeppelin/contracts@5.0.1/token/ERC20/extensions/ERC20Permit.sol";
 
-contract Krishna is ERC20, ERC20Burnable, Ownable, ERC20Permit {
+contract NewToken is ERC20, ERC20Burnable, Ownable, ERC20Permit {
     constructor(address initialOwner)
-        ERC20("Krishna", "JKL")
+        ERC20("NewToken", "MMP")
         Ownable(initialOwner)
-        ERC20Permit("Krishna")
+        ERC20Permit("NewToken")
     {}
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
+    }
+    
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        _transfer(_msgSender(), recipient, amount);
+        return true;
+    }
+
+    function burn(uint256 amount) public override {
+        _burn(_msgSender(), amount);
     }
 }
